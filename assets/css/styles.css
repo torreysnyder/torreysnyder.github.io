@@ -11,3 +11,24 @@ h1, h2, h3 {
 p {
   line-height: 1.5;
 }
+
+.header-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.welcome-text {
+  text-align: center;
+}
+
+.headshot {
+  width: 150px;
+  height: auto;
+}
+
+.research-image {
+  width: 300px;
+  height: auto;
+}
