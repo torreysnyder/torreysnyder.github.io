@@ -1,63 +1,729 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Torrey Snyder - Homepage</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-  </head>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Torrey Snyder</title>
+    <meta name="author" content="Torrey Snyder">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #fffdf8;
+            --warm-gray: #2d2a26;
+            --soft-orange: #e07850;
+            --blush: #f4e4dc;
+            --muted: #8a8580;
+            --light-line: rgba(45, 42, 38, 0.08);
+        }
 
-  <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pages/about.html">About</a></li>
-        <li><a href="pages/contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="header-section">
-      <div class="text-content">
-        <h1>Hi, I'm Torrey!</h1>
-        <p class="welcome-text"> Welcome to my personal website! </p>
-        <p>I am a first-year PhD candidate at the University of Edinburgh. My research investigates the alignment of causal reasoning in humans and language models.  I previously received my Master's degree in Brain & Cognitive Sciences at the University of Amsterdam. Prior to that, I completed my Bachelor's degree in Computational Neuroscience at the University of Southern California.</p>
-      </div>
-      <img src="images/headshot.jpg" alt="Torrey Snyder" class="headshot" style="width: 300px; height: auto; float: right; margin-left: 20px;">
-    </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--warm-gray);
+            background: linear-gradient(135deg, var(--cream) 0%, #fff9f5 50%, var(--cream) 100%);
+        }
+
+        ::selection {
+            background: var(--blush);
+            color: var(--warm-gray);
+        }
+
+        a {
+            color: var(--soft-orange);
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        a:hover {
+            color: var(--warm-gray);
+        }
+
+        /* Ambient background shapes */
+        .ambient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ambient::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--blush) 0%, transparent 70%);
+            opacity: 0.5;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .ambient::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #fce8d5 0%, transparent 70%);
+            opacity: 0.4;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 20px); }
+        }
+
+        /* ========== DESKTOP LAYOUT ========== */
+        @media (min-width: 1025px) {
+            html, body {
+                overflow: auto;
+            }
+
+            .layout {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                min-height: 100vh;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            /* Left Sidebar */
+            .sidebar {
+                padding: 40px 36px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-right: 1px solid var(--light-line);
+                animation: slideIn 0.6s ease-out;
+                position: sticky;
+                top: 0;
+                height: 100vh;
+            }
+
+            @keyframes slideIn {
+                from { opacity: 0; transform: translateX(-20px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+
+            .profile-photo {
+                width: 135px;
+                height: 135px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 3px solid var(--blush);
+                margin-bottom: 20px;
+                transition: transform 0.4s ease, border-color 0.3s ease;
+            }
+
+            .profile-photo:hover {
+                transform: scale(1.05);
+                border-color: var(--soft-orange);
+            }
+
+            .sidebar h1 {
+                font-family: 'Fraunces', serif;
+                font-size: 30px;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                margin-bottom: 6px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+                font-weight: 500;
+                color: var(--muted);
+                margin-bottom: 12px;
+            }
+
+            .contact-info {
+                font-size: 18px;
+                color: var(--muted);
+                margin-bottom: 16px;
+            }
+
+            .contact-info p {
+                margin-bottom: 6px;
+            }
+
+            .contact-info .email {
+                font-family: 'Fraunces', serif;
+                font-style: italic;
+            }
+
+            .social-pills {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .social-pills a {
+                display: inline-block;
+                padding: 8px 14px;
+                background: var(--blush);
+                border-radius: 100px;
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--warm-gray);
+                transition: all 0.25s ease;
+            }
+
+            .social-pills a:hover {
+                background: var(--soft-orange);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+            /* Right Content Area */
+            .content {
+                padding: 40px 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+                overflow: visible;
+                animation: fadeIn 0.6s ease-out 0.2s both;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            /* Section Headers */
+            h2 {
+                font-family: 'Fraunces', serif;
+                font-size: 20px;
+                font-weight: 400;
+                margin-bottom: 10px;
+                color: var(--warm-gray);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            h2::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: var(--light-line);
+            }
+
+            /* About */
+            .bio-text {
+                font-size: 19px;
+                line-height: 1.7;
+                color: var(--warm-gray);
+            }
+
+            .bio-text strong {
+                color: var(--soft-orange);
+                font-weight: 500;
+            }
+
+            .collab-note {
+                margin-top: 8px;
+                font-size: 18px;
+                color: var(--muted);
+                font-style: italic;
+            }
+
+            /* Two Column Row */
+            .two-col {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            /* Education */
+            .edu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .edu-item {
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .edu-year {
+                font-family: 'Fraunces', serif;
+                font-size: 16px;
+                color: var(--muted);
+                min-width: 72px;
+                padding-top: 2px;
+            }
+
+            .edu-content {
+                flex: 1;
+            }
+
+            .edu-degree {
+                font-weight: 500;
+                font-size: 18px;
+                margin-bottom: 2px;
+            }
+
+            .edu-school {
+                font-size: 17px;
+                color: var(--muted);
+                line-height: 1.5;
+            }
+
+            
+          /* Research Interests */
+            .pub-list {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .pub-item {
+                padding: 16px 18px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 12px;
+                border: 1px solid var(--light-line);
+                transition: all 0.3s ease;
+            }
+
+            .pub-item:hover {
+                background: rgba(255, 255, 255, 0.9);
+                box-shadow: 0 6px 24px rgba(224, 120, 80, 0.08);
+                transform: translateY(-2px);
+            }
+
+            .pub-title {
+                font-family: 'Fraunces', serif;
+                font-size: 17px;
+                font-weight: 600;
+                line-height: 1.4;
+                margin-bottom: 8px;
+                color: var(--warm-gray);
+            }
+
+            .pub-links {
+                display: flex;
+                gap: 6px;
+            }
+
+            .pub-links a {
+                font-size: 15px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                padding: 4px 10px;
+                background: var(--blush);
+                border-radius: 5px;
+                color: var(--warm-gray);
+            }
+
+            .pub-links a:hover {
+                background: var(--soft-orange);
+                color: white;
+            }
+
+            /* Visitor Map */
+            .map-section {
+                margin-top: 16px;
+            }
+        }
+
+        /* ========== MOBILE/TABLET LAYOUT ========== */
+        @media (max-width: 1024px) {
+            html, body {
+                height: auto;
+                overflow: auto;
+            }
+
+            .layout {
+                display: block;
+                max-width: 680px;
+                margin: 0 auto;
+                padding: 60px 24px;
+            }
+
+            /* Header Card */
+            .sidebar {
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-radius: 24px;
+                padding: 40px 32px;
+                margin-bottom: 32px;
+                border: 1px solid var(--light-line);
+                box-shadow: 0 4px 40px rgba(224, 120, 80, 0.06);
+                text-align: center;
+                animation: cardIn 0.7s ease-out;
+            }
+
+            @keyframes cardIn {
+                from { opacity: 0; transform: translateY(30px) scale(0.98); }
+                to { opacity: 1; transform: translateY(0) scale(1); }
+            }
+
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 3px solid var(--blush);
+                margin-bottom: 20px;
+                transition: transform 0.4s ease, border-color 0.3s ease;
+            }
+
+            .profile-photo:hover {
+                transform: scale(1.05);
+                border-color: var(--soft-orange);
+            }
+
+            .sidebar h1 {
+                font-family: 'Fraunces', serif;
+                font-size: 34px;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                margin-bottom: 8px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+                font-weight: 500;
+                color: var(--muted);
+                margin-bottom: 12px;
+            }
+
+            .contact-info {
+                font-size: 18px;
+                color: var(--muted);
+                margin-bottom: 20px;
+            }
+
+            .contact-info p {
+                margin-bottom: 4px;
+            }
+
+            .contact-info .email {
+                font-family: 'Fraunces', serif;
+                font-style: italic;
+            }
+
+            .social-pills {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .social-pills a {
+                display: inline-block;
+                padding: 8px 16px;
+                background: var(--blush);
+                border-radius: 100px;
+                font-size: 17px;
+                font-weight: 500;
+                color: var(--warm-gray);
+                transition: all 0.25s ease;
+            }
+
+            .social-pills a:hover {
+                background: var(--soft-orange);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+            /* Content Sections */
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .content section {
+                animation: fadeUp 0.6s ease-out backwards;
+            }
+
+            .content section:nth-child(1) { animation-delay: 0.1s; }
+            .content section:nth-child(2) { animation-delay: 0.2s; }
+            .content section:nth-child(3) { animation-delay: 0.3s; }
+            .content section:nth-child(4) { animation-delay: 0.4s; }
+            .content section:nth-child(5) { animation-delay: 0.5s; }
+
+            @keyframes fadeUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            h2 {
+                font-family: 'Fraunces', serif;
+                font-size: 24px;
+                font-weight: 400;
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            h2::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: linear-gradient(90deg, var(--light-line) 0%, transparent 100%);
+            }
+
+            /* About */
+            .bio-text {
+                font-size: 20px;
+                line-height: 1.8;
+                color: var(--warm-gray);
+            }
+
+            .bio-text strong {
+                color: var(--soft-orange);
+                font-weight: 500;
+            }
+
+            .collab-note {
+                margin-top: 12px;
+                font-size: 18px;
+                color: var(--muted);
+                font-style: italic;
+            }
+
+            /* Two Column - stack on mobile */
+            .two-col {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            /* Education */
+            .edu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .edu-item {
+                display: flex;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .edu-year {
+                font-family: 'Fraunces', serif;
+                font-size: 17px;
+                color: var(--muted);
+                min-width: 90px;
+                padding-top: 2px;
+            }
+
+            .edu-content {
+                flex: 1;
+            }
+
+            .edu-degree {
+                font-weight: 500;
+                margin-bottom: 2px;
+            }
+
+            .edu-school {
+                font-size: 18px;
+                color: var(--muted);
+            }
+
+            
+
+            /* Research Interests */
+            .pub-list {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .pub-item {
+                padding: 24px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 16px;
+                border: 1px solid var(--light-line);
+                transition: all 0.3s ease;
+            }
+
+            .pub-item:hover {
+                background: rgba(255, 255, 255, 0.9);
+                box-shadow: 0 8px 30px rgba(224, 120, 80, 0.08);
+                transform: translateY(-2px);
+            }
+
+            .pub-title {
+                font-family: 'Fraunces', serif;
+                font-size: 21px;
+                font-weight: 600;
+                line-height: 1.5;
+                margin-bottom: 10px;
+                color: var(--warm-gray);
+            }
+
+            
+            .pub-links {
+                display: flex;
+                gap: 10px;
+            }
+
+            .pub-links a {
+                font-size: 16px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                padding: 6px 12px;
+                background: var(--blush);
+                border-radius: 6px;
+                color: var(--warm-gray);
+            }
+
+            .pub-links a:hover {
+                background: var(--soft-orange);
+                color: white;
+            }
+
+
+            /* Visitor Map */
+            .map-section {
+                margin-top: 24px;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            .layout {
+                padding: 40px 16px;
+            }
+
+            .sidebar {
+                padding: 32px 20px;
+            }
+
+            .sidebar h1 {
+                font-size: 30px;
+            }
+
+            .edu-item {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .edu-year {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient"></div>
     
-    
+    <div class="layout">
+        <!-- Sidebar / Header Card -->
+        <aside class="sidebar">
+            <img src="images/headshot.jpg" alt="Torrey Snyder" class="profile-photo">
+            <h1>Torrey Snyder</h1>
+            <p class="subtitle">PhD Student at the University of Edinburgh</p>
+            <div class="contact-info">
+                <p class="email">t.a.snyder@sms.ed.ac.uk</p>
+            </div>
+            <div class="social-pills">
+                <a href="https://github.com/torreysnyder">GitHub</a>
+                <a href="www.linkedin.com/in/torrey-snyder-054956214">LinkedIn</a>
+                <a href="CV_edinburgh.pdf">CV</a><li>
+            </div>
+        </aside>
 
-  <div class="contact-links" style="text-align:center;">
-    <h2>Connect with me:</h2>
-    <ul style="list-style: none; padding: 0;">
-      <li><a href="mailto:t.a.snyder@sms.ed.ac.uk">Email</a></li>
-      <li><a href="https://linkedin.com/in/torrey-snyder-054956214" target="_blank">LinkedIn</a></li>
-      <li><a href="https://github.com/torreysnyder" target="_blank">GitHub</a></li>
-      <li><a href="CV_edinburgh.pdf" target="_blank">CV</a></li>
-    </ul> 
-  </div>
+        <!-- Content -->
+        <main class="content">
+            <!-- About -->
+            <section class="about">
+                <h2>About</h2>
+                <p class="bio-text">
+                    I am a first-year PhD candidate at the University of Edinburgh. My research investigates the alignment of causal reasoning in humans and language models. I am particularly interested in implementing component attribution methods from <strong>mechanistic interpretability</strong> to understand <strong>causal selection</strong>in language models.
+                </p>
+                <p class="collab-note">
+                    I'm open to collaborations for research in developing causal reasoning benchmarks, AI safety, human-AI alignment, etc. Feel free to reach out!
+                </p>
+            </section>
+
+            <!-- Education -->
+            <section class="education">
+                <h2>Education</h2>
+                <div class="edu-list">
+                    <div class="edu-item">
+                        <span class="edu-year">2025 September – Now</span>
+                        <span class="edu-content">🎓 PhD, <a href="https://www.ed.ac.uk/">University of Edinburgh</a>, supervised by <a href="https://quillienlab.github.io/">Dr. Tadeg Quillien</a>></span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-year">2022 – 2024</span>
+                        <span class="edu-content">MSc in Brain and Cognitive Sciences (Research), <a href="https://www.uva.nl/en">University of Amsterdam</a></span>
+                    </div>
+                    <div class="edu-item">
+                        <span class="edu-year">2018 – 2022</span>
+                        <span class="edu-content">BS in Computational Neuroscience, <a href="https://www.usc.edu/">University of Southern California</a></span>
+                    </div>
+                </div>
+            </section>
 
 
-    <div class="research-section">
-      <h2>Research Interests</h2>
-      <div class="research-images" style="display: flex; justify-content: space-around; align-items: center; gap: 20px; padding: 0 50px;">
-        <div class="research-item" style="text-align: center;">
-          <img src="images/cocosci.jpg" alt="Computational Cognitive Science" class="research-image" style="width: 250px; height: auto;">
-          <p>Computational Cognitive Science</p>
-        </div>
-        <div class="research-item" style="text-align: center;">
-          <img src="images/ai.png" alt="Explainable AI" class="research-image" class="research-image" style="width: 250px; height: auto;">
-          <p>Explainable AI</p>
-        </div>
-        <div class="research-item" style="text-align: center;">
-          <img src="images/neuroai.png" alt="Neuro-AI" class="research-image" class="research-image" style="width: 250px; height: auto;">
-          <p>Neuro-AI</p>
-        </div>
+            <!-- Research Interests -->
+            <section class="research-interests">
+                <h2>Research Interests</h2>
+                <div class="pub-list">
+                    <div class="pub-item">
+                        <img src="images/cocosci.jpg" alt="Computational Cognitive Science" class="research-image" style="width: 250px; height: auto;">
+                        <div class="pub-title">Computational Cognitive Science</div>
+                    </div>
+
+                    <div class="pub-item">
+                        <img src="images/ai.png" alt="Explainable AI" class="research-image" class="research-image" style="width: 250px; height: auto;">
+                        <div class="pub-title">Explainable AI</div>
+                    </div>
+
+                  <div class="pub-item">
+                        <img src="images/neuroai.png" alt="Neuro-AI" class="research-image" class="research-image" style="width: 250px; height: auto;">
+                        <div class="pub-title">Neuro-AI</div>
+                        <div class="pub-links">
+                            <li><a href="MSc_Final_Research_Paper_Copy_ (3).pdf" target="_blank">MSc Research on cross-modal representational alignment between brain's visual system and language model embeddings</a></li>
+                            <li><a href="MSc_RP1_Final_Draft (2).pdf" target="_blank">MSc Research on multimodal model embeddings of abstract & concrete concepts</a></li>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Visitor Map -->
+            <section class="map-section">
+                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=tt&d=w1MiC1LcS3pvn2YTrat3h65pmAVb_64KjppwKlJjlmo&co=a3d6fb&cmo=fda2a2&cmn=89fd89&ct=ffffff"></script>
+            </section>
+        </main>
     </div>
-
-    <div class="prior-works" style="text-align:center;">
-    <h2>Prior work:</h2>
-    <ul style="list-style: none; padding: 0;">
-      <li><a href="MSc_Final_Research_Paper_Copy_ (3).pdf" target="_blank">MSc Research on cross-modal representational alignment between brain's visual system and language model embeddings</a></li>
-      <li><a href="MSc_RP1_Final_Draft (2).pdf" target="_blank">MSc Research on multimodal model embeddings of abstract & concrete concepts</a></li>
-    </ul> 
-    </div>
-  </body>
+</body>
 </html>
+
+    
