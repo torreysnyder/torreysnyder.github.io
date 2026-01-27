@@ -556,8 +556,8 @@
 
             /* Research Interests */
             .pub-list {
-                display: flex;
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             }
 
@@ -635,6 +635,10 @@
             .edu-year {
                 min-width: auto;
             }
+
+            .pub-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -649,7 +653,7 @@
             <h1>Torrey Snyder</h1>
             <p class="subtitle">PhD Student at the University of Edinburgh</p>
             <div class="contact-info">
-                <p class="email">t.a.snyder@sms.ed.ac.uk</p>
+                <p class="email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9cd97d897cad7c0dddccbf9cad4ca97dcdd97d8da97ccd2">[email&#160;protected]</a></p>
             </div>
             <div class="social-pills">
                 <a href="https://github.com/torreysnyder">GitHub</a>
@@ -708,9 +712,25 @@
                   <div class="pub-item">
                         <img src="images/neuroai.png" alt="Neuro-AI" class="research-image" class="research-image" style="width: 250px; height: auto;">
                         <div class="pub-title">Neuro-AI</div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Prior Work -->
+            <section class="prior-work">
+                <h2>Prior Work</h2>
+                <div class="pub-list" style="grid-template-columns: 1fr;">
+                    <div class="pub-item">
+                        <div class="pub-title">MSc Research on cross-modal representational alignment between brain's visual system and language model embeddings</div>
                         <div class="pub-links">
-                            <li><a href="MSc_Final_Research_Paper_Copy_ (3).pdf" target="_blank">MSc Research on cross-modal representational alignment between brain's visual system and language model embeddings</a></li>
-                            <li><a href="MSc_RP1_Final_Draft (2).pdf" target="_blank">MSc Research on multimodal model embeddings of abstract & concrete concepts</a></li>
+                            <a href="MSc_Final_Research_Paper_Copy_ (3).pdf" target="_blank">PDF</a>
+                        </div>
+                    </div>
+                    <div class="pub-item">
+                        <div class="pub-title">MSc Research on multimodal model embeddings of abstract & concrete concepts</div>
+                        <div class="pub-links">
+                            <a href="MSc_RP1_Final_Draft (2).pdf" target="_blank">PDF</a>
                         </div>
                     </div>
                 </div>
@@ -719,11 +739,11 @@
 
             <!-- Visitor Map -->
             <section class="map-section">
-                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=300&t=tt&d=w1MiC1LcS3pvn2YTrat3h65pmAVb_64KjppwKlJjlmo&co=a3d6fb&cmo=fda2a2&cmn=89fd89&ct=ffffff"></script>
+                <h2>Visitor Map</h2>
+                <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=wi6SNsBW_LHwS4lebdWQaiS19mTE3we2DUkeRPuDSOc&cl=ffffff&w=a"></script>
             </section>
         </main>
     </div>
+
 </body>
 </html>
-
-    
